@@ -59,7 +59,7 @@ public class ItemControl {
     public String itemAddDB(@RequestParam String title, @RequestParam String anons, @RequestParam String price, @RequestParam String url, Model model){
         Item item = new Item(title, anons, price, url);
         itemRepository.save(item);
-        return "redirect:/item";
+        return "redirect:/admin-panel";
     }
 
 
@@ -89,7 +89,7 @@ public class ItemControl {
 
     @PostMapping("/admin-panel/{id}/edit")
     public String itemUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String anons, @RequestParam String price, @RequestParam String url, Model model){
-        Item item = itemRepository.findById(id).orElseThrow();
+        Item item = itemRepository.findById(id).orElseThrow(null);
         item.setTitle(title);
         item.setUrl(url);
         item.setAnons(anons);
@@ -101,7 +101,7 @@ public class ItemControl {
 
     @PostMapping("/admin-panel/{id}/remove")
     public String itemDelete(@PathVariable(value = "id") long id, Model model){
-        Item item = itemRepository.findById(id).orElseThrow();
+        Item item = itemRepository.findById(id).orElseThrow(null);
         itemRepository.delete(item);
 
         return "redirect:/admin-panel";
