@@ -21,14 +21,6 @@ public class ItemControl {
     @Autowired
     private ItemRepository itemRepository;
 
-    @GetMapping("/item")
-    public String item(Model model){
-        Iterable<Item> items = itemRepository.findAll();
-        model.addAttribute("items", items);
-        return "shop";
-    }
-
-
 
     @GetMapping("/admin-panel")
     public String adminPanel(Model model){

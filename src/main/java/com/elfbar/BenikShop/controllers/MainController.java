@@ -25,4 +25,24 @@ public class MainController {
         return "LogOut";
     }
 
+    @GetMapping("/shop")
+    public String shop(Model model){
+        return "shop";
+    }
+
+    @GetMapping("/admin-panel/city-tav")
+    public String city(Model model){
+        return "city-tav";
+    }
+
+    @GetMapping("/admin-panel/od-tav")
+    public String odessa(Model model){
+        return "od-tav";
+    }
+
+    @GetMapping("/admin-panel/kiev-tav")
+    public String kiev(Model model){
+        return "city-tav";
+    }
+
 }
