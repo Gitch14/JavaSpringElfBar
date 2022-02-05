@@ -1,7 +1,5 @@
 package com.elfbar.BenikShop.models;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +11,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title,anons,views,price,url;
-
+    private String title,url,anons,price,sale,cashback,date;
 
 
     public Long getId() {
@@ -57,21 +54,40 @@ public class Item {
         this.price = price;
     }
 
-    public String getViews() {
-        return views;
+    public String getSale() {
+        return sale;
     }
 
-    public void setViews(String views) {
-        this.views = views;
+    public void setSale(String sale) {
+        this.sale = sale;
+    }
+
+    public String getCashback() {
+        return cashback;
+    }
+
+    public void setCashback(String cashback) {
+        this.cashback = cashback;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Item() {
     }
 
-    public Item(String title, String anons, String price, String url) {
+    public Item(String title, String url, String anons, String price, String sale, String cashback, String date) {
         this.title = title;
+        this.url = url;
         this.anons = anons;
         this.price = price;
-        this.url = url;
+        this.sale = sale;
+        this.cashback = cashback;
+        this.date = date;
     }
 }

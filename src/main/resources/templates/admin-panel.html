@@ -26,15 +26,17 @@
                     <div class="card-body">
                         <p th:text="${el.title}"></p>
                         <p th:text="${el.anons}"></p>
+                        <small class="text-muted" th:text="'Price : ' + ${el.price} + ' UAH'"></small><br>
+                        <small class="text-muted" th:text="'New Price : ' + ${el.sale} + ' UAH'"></small><br>
+                        <small class="text-muted" th:text="'Cashback : ' + ${el.cashback}+ ' %'"></small><br>
+                        <small class="text-muted" th:text="'Date : ' + ${el.date}"></small><br>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary"><a th:href="'/admin-panel/' + ${el.id}">Купить</a></button>
                                 <button type="button" class="btn btn-sm btn-outline-secondary"><a th:href="'/admin-panel/' + ${el.id} + '/edit'">Редактировать</a></button>
                                 <form th:action="'/admin-panel/' + ${el.id} + '/remove'" method="post">
                                 <button type="submit" class="btn btn-sm btn-outline-secondary">Удалить</button>
                                 </form>
                             </div>
-                            <small class="text-muted" th:text="${el.price} + ' UAH'"></small>
                         </div>
                     </div>
                 </div>

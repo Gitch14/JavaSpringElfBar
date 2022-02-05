@@ -28,19 +28,7 @@ public class ItemControl {
         return "shop";
     }
 
-    @GetMapping("/login")
-    public String login(Model model){
-        Iterable<Item> items = itemRepository.findAll();
-        model.addAttribute("items", items);
-        return "login";
-    }
 
-    @GetMapping("/logout")
-    public String logOut(Model model){
-        Iterable<Item> items = itemRepository.findAll();
-        model.addAttribute("items", items);
-        return "LogOut";
-    }
 
     @GetMapping("/admin-panel")
     public String adminPanel(Model model){
@@ -56,8 +44,8 @@ public class ItemControl {
 
 
     @PostMapping("/admin-panel/add")
-    public String itemAddDB(@RequestParam String title, @RequestParam String anons, @RequestParam String price, @RequestParam String url, Model model){
-        Item item = new Item(title, anons, price, url);
+    public String itemAddDB(@RequestParam String title, @RequestParam String url, @RequestParam String anons, @RequestParam String price, @RequestParam String sale, @RequestParam String cashback, @RequestParam String date,Model model){
+        Item item = new Item(title,url,anons,price,sale,cashback,date) ;
         itemRepository.save(item);
         return "redirect:/admin-panel";
     }
@@ -88,12 +76,15 @@ public class ItemControl {
 
 
     @PostMapping("/admin-panel/{id}/edit")
-    public String itemUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String anons, @RequestParam String price, @RequestParam String url, Model model){
+    public String itemUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String anons, @RequestParam String price, @RequestParam String url,  @RequestParam String sale, @RequestParam String cashback, @RequestParam String date, Model model){
         Item item = itemRepository.findById(id).orElseThrow(null);
         item.setTitle(title);
-        item.setUrl(url);
         item.setAnons(anons);
         item.setPrice(price);
+        item.setUrl(url);
+        item.setSale(sale);
+        item.setCashback(cashback);
+        item.setDate(date);
         itemRepository.save(item);
 
         return "redirect:/admin-panel";
